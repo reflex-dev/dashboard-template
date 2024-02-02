@@ -1,4 +1,5 @@
 """The style classes and constants for the Dashboard App."""
+
 from reflex.components.radix import themes as rdxt
 
 THEME = rdxt.theme(
