@@ -1,5 +1,4 @@
 import reflex as rx
-from reflex.components.radix import themes as rdxt
 
 from dashboard.navigation import dashboard_sidebar, navbar
 from dashboard.styles import BACKGROUND_COLOR, FONT_FAMILY
@@ -11,7 +10,7 @@ def tools() -> rx.Component:
         rx.box(
             navbar(heading="Tools"),
             rx.box(
-                rdxt.text("placeholder"),
+                rx.text("placeholder"),
                 margin_top="calc(50px + 2em)",
                 padding="2em",
             ),
