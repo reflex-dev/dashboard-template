@@ -1,10 +1,9 @@
 """Library of customized graphs and tables for the dashboard."""
 import reflex as rx
-from reflex.components.radix import themes as rdxt
 
 
 def card(*children, **props):
-    return rdxt.card(
+    return rx.card(
         *children,
         box_shadow="rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;",
         **props,
@@ -17,11 +16,11 @@ def stat_card(title: str, stat, delta) -> rx.Component:
     return card(
         rx.hstack(
             rx.vstack(
-                rdxt.text(title),
-                rx.stat(
+                rx.text(title),
+                rx.chakra.stat(
                     rx.hstack(
-                        rx.stat_number(stat, color=color),
-                        rx.stat_help_text(rx.stat_arrow(type_=arrow), delta[1:]),
+                        rx.chakra.stat_number(stat, color=color),
+                        rx.chakra.stat_help_text(rx.chakra.stat_arrow(type_=arrow), delta[1:]),
                     ),
                 ),
             ),
@@ -30,19 +29,19 @@ def stat_card(title: str, stat, delta) -> rx.Component:
 
 
 def table(tabular_data: list[list]):
-    return rdxt.table_root(
-        rdxt.table_header(
-            rdxt.table_row(
-                *[rdxt.table_column_header_cell(cell) for cell in tabular_data[0]],
+    return rx.table.root(
+        rx.table.header(
+            rx.table.row(
+                *[rx.table.column_header_cell(cell) for cell in tabular_data[0]],
             ),
         ),
-        rdxt.table_body(
+        rx.table.body(
             *[
-                rdxt.table_row(
+                rx.table.row(
                     *[
-                        rdxt.table_row_header_cell(cell)
+                        rx.table.row_header_cell(cell)
                         if i == 0
-                        else rdxt.table_cell(cell)
+                        else rx.table.cell(cell)
                         for i, cell in enumerate(row)
                     ],
                 )

@@ -1,7 +1,7 @@
 """Mock data to populate the dashboard charts and tables."""
 
+import reflex as rx
 from dashboard.graphs import Area, Line
-from reflex.components.radix import themes as rdxt
 
 stat_card_data = [
     [
@@ -62,7 +62,7 @@ areas = [
 
 tabular_data = [
     ["Full name", "Email", "Group"],
-    ["Danilo Sousa", "danilo@example.com", rdxt.badge("Developer")],
-    ["Zahra Ambessa", "zahra@example.com", rdxt.badge("Admin", variant="surface")],
-    ["Jasper Eriksson", "jasper@example.com", rdxt.badge("Developer")],
+    ["Danilo Sousa", "danilo@example.com", rx.badge("Developer")],
+    ["Zahra Ambessa", "zahra@example.com", rx.badge("Admin", variant="surface")],
+    ["Jasper Eriksson", "jasper@example.com", rx.badge("Developer")],
 ]

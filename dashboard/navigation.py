@@ -1,25 +1,26 @@
 import reflex as rx
-from reflex.components.radix import themes as rdxt
 from reflex.components import lucide
 
 from dashboard.styles import FONT_FAMILY
 
 
-def sidebar_link(text: str, href: str, icon: str) -> rdxt.Link:
-    return rdxt.link(
-        rdxt.flex(
-            rdxt.icon_button(
-                lucide.icon(tag=icon, weight=16, height=16),
-                variant="soft",
-            ),
-            text,
-            py="2",
-            px="4",
-            gap="4",
-            align="baseline",
-            direction="row",
-            font_family=FONT_FAMILY,
-        ),
+def sidebar_link(text: str, href: str, icon: str):
+    print(href)
+    return rx.link(
+        text,
+        # rx.flex(
+        #     rx.icon_button(
+        #         lucide.icon(tag=icon, weight=16, height=16),
+        #         variant="soft",
+        #     ),
+        #     text,
+        #     py="2",
+        #     px="4",
+        #     gap="4",
+        #     align="baseline",
+        #     direction="row",
+        #     font_family=FONT_FAMILY,
+        # ),
         href=href,
         width="100%",
         border_radius="8px",
@@ -39,15 +40,15 @@ def sidebar(
     return rx.vstack(
         rx.hstack(
             rx.image(src=logo_src, height="28px", border_radius="8px"),
-            rdxt.heading(
+            rx.heading(
                 heading,
                 font_family=FONT_FAMILY,
                 size="7",
             ),
             width="100%",
-            spacing="1em",
+            spacing="7",
         ),
-        rdxt.separator(my="3"),
+        rx.divider(margin_y="3"),
         rx.vstack(
             *sidebar_links,
             padding_y="1em",
@@ -72,24 +73,26 @@ dashboard_sidebar = sidebar(
     heading="REFLEX",
 )
 
+class State(rx.State):
+    pass
 
 def navbar(heading: str) -> rx.Component:
     return rx.hstack(
-        rdxt.heading(heading, font_family=FONT_FAMILY, size="7"),
+        rx.heading(heading, font_family=FONT_FAMILY, size="7"),
         rx.spacer(),
-        rdxt.dropdownmenu_root(
-            rdxt.dropdownmenu_trigger(
-                rdxt.button(
+        rx.menu.root(
+            rx.menu.trigger(
+                rx.button(
                     "Menu",
                     lucide.icon(tag="chevron_down", weight=16, height=16),
                     font_family=FONT_FAMILY,
                     variant="soft",
                 ),
             ),
-            rdxt.dropdownmenu_content(
-                rdxt.dropdownmenu_item("Settings"),
-                rdxt.dropdownmenu_item("Profile"),
-                rdxt.dropdownmenu_item("Logout"),
+            rx.menu.content(
+                rx.menu.item("Settings"),
+                rx.menu.item("Profile"),
+                rx.menu.item("Logout"),
                 font_family=FONT_FAMILY,
                 variant="soft",
             ),

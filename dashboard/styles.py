@@ -1,8 +1,8 @@
 """The style classes and constants for the Dashboard App."""
 
-from reflex.components.radix import themes as rdxt
+from reflex.components.radix import themes as rx
 
-THEME = rdxt.theme(
+THEME = rx.theme(
     appearance="light",
     has_background=True,
     radius="large",

@@ -1,7 +1,6 @@
 """The main index page."""
 
 import reflex as rx
-from reflex.components.radix import themes as rdxt
 from dashboard.data import (
     line_chart_data,
     lines,
@@ -26,27 +25,27 @@ from dashboard.styles import BACKGROUND_COLOR, FONT_FAMILY
 
 
 def content_grid():
-    return rx.grid(
-        *[rx.grid_item(stat_card(*c), col_span=1, row_span=1) for c in stat_card_data],
-        rx.grid_item(
+    return rx.chakra.grid(
+        *[rx.chakra.grid_item(stat_card(*c), col_span=1, row_span=1) for c in stat_card_data],
+        rx.chakra.grid_item(
             line_chart(data=line_chart_data, data_key="name", lines=lines),
             col_span=3,
             row_span=2,
         ),
-        rx.grid_item(
+        rx.chakra.grid_item(
             pie_chart(data=pie_chart_data, data_key="value", name_key="name"),
             row_span=2,
             col_span=1,
         ),
-        rx.grid_item(table(tabular_data=tabular_data), col_span=4, row_span=2),
-        rx.grid_item(
+        rx.chakra.grid_item(table(tabular_data=tabular_data), col_span=4, row_span=2),
+        rx.chakra.grid_item(
             area_chart(data=area_chart_data, data_key="name", areas=areas),
             col_span=3,
             row_span=2,
         ),
-        rx.grid_item(col_span=2, bg="lightgreen"),
-        rx.grid_item(col_span=2, bg="yellow"),
-        rx.grid_item(col_span=4, bg="orange"),
+        rx.chakra.grid_item(col_span=2, bg="lightgreen"),
+        rx.chakra.grid_item(col_span=2, bg="yellow"),
+        rx.chakra.grid_item(col_span=4, bg="orange"),
         template_columns="repeat(4, 1fr)",
         width="100%",
         gap=4,
@@ -55,7 +54,7 @@ def content_grid():
 
 
 def index() -> rx.Component:
-    return rdxt.box(
+    return rx.box(
         dashboard_sidebar,
         rx.box(
             navbar(heading="Dashboard"),
