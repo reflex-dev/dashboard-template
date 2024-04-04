@@ -5,7 +5,6 @@ from dashboard.styles import FONT_FAMILY
 
 
 def sidebar_link(text: str, href: str, icon: str):
-    print(href)
     return rx.link(
         text,
         # rx.flex(
@@ -73,8 +72,10 @@ dashboard_sidebar = sidebar(
     heading="REFLEX",
 )
 
+
 class State(rx.State):
     pass
+
 
 def navbar(heading: str) -> rx.Component:
     return rx.hstack(

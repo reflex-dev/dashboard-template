@@ -20,7 +20,9 @@ def stat_card(title: str, stat, delta) -> rx.Component:
                 rx.chakra.stat(
                     rx.hstack(
                         rx.chakra.stat_number(stat, color=color),
-                        rx.chakra.stat_help_text(rx.chakra.stat_arrow(type_=arrow), delta[1:]),
+                        rx.chakra.stat_help_text(
+                            rx.chakra.stat_arrow(type_=arrow), delta[1:]
+                        ),
                     ),
                 ),
             ),

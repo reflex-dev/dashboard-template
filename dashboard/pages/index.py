@@ -17,16 +17,18 @@ from dashboard.graphs import (
     stat_card,
     table,
 )
-from dashboard.navigation import dashboard_sidebar, navbar
-from dashboard.styles import BACKGROUND_COLOR, FONT_FAMILY
-
+from dashboard.navigation import navbar
+from dashboard.template import template
 
 # Content in a grid layout.
 
 
 def content_grid():
     return rx.chakra.grid(
-        *[rx.chakra.grid_item(stat_card(*c), col_span=1, row_span=1) for c in stat_card_data],
+        *[
+            rx.chakra.grid_item(stat_card(*c), col_span=1, row_span=1)
+            for c in stat_card_data
+        ],
         rx.chakra.grid_item(
             line_chart(data=line_chart_data, data_key="name", lines=lines),
             col_span=3,
@@ -43,9 +45,9 @@ def content_grid():
             col_span=3,
             row_span=2,
         ),
-        rx.chakra.grid_item(col_span=2, bg="lightgreen"),
-        rx.chakra.grid_item(col_span=2, bg="yellow"),
-        rx.chakra.grid_item(col_span=4, bg="orange"),
+        # rx.chakra.grid_item(col_span=2, bg="lightgreen"),
+        # rx.chakra.grid_item(col_span=2, bg="yellow"),
+        # rx.chakra.grid_item(col_span=4, bg="orange"),
         template_columns="repeat(4, 1fr)",
         width="100%",
         gap=4,
@@ -53,10 +55,9 @@ def content_grid():
     )
 
 
+@template
 def index() -> rx.Component:
     return rx.box(
-        dashboard_sidebar,
-        rx.box(
             navbar(heading="Dashboard"),
             rx.box(
                 content_grid(),
@@ -64,8 +65,4 @@ def index() -> rx.Component:
                 padding="2em",
             ),
             padding_left="250px",
-        ),
-        background_color=BACKGROUND_COLOR,
-        font_family=FONT_FAMILY,
-        padding_bottom="4em",
-    )
+        )
