@@ -1,5 +1,5 @@
 """Library of customized graphs and tables for the dashboard."""
-from typing import Dict, List, Union
+from __future__ import annotations
 
 import reflex as rx
 
@@ -32,7 +32,7 @@ def stat_card(title: str, stat, delta) -> rx.Component:
     )
 
 
-def table(tabular_data: List[List]):
+def table(tabular_data: list[list]):
     return rx.table.root(
         rx.table.header(
             rx.table.row(
@@ -60,7 +60,7 @@ class Line(rx.Base):
     stroke: str
 
 
-def line_chart(data: Union[rx.Var, List[dict]], data_key: str, lines: List[Line]):
+def line_chart(data: rx.Var | list[dict], data_key: str, lines: list[Line]):
     return card(
         rx.recharts.line_chart(
             *[
@@ -76,7 +76,7 @@ def line_chart(data: Union[rx.Var, List[dict]], data_key: str, lines: List[Line]
     )
 
 
-def pie_chart(data: Union[rx.Var, List[dict]], data_key: str, name_key: str):
+def pie_chart(data: rx.Var | list[dict], data_key: str, name_key: str):
     return card(
         rx.recharts.pie_chart(
             rx.recharts.pie(
@@ -99,7 +99,7 @@ class Area(rx.Base):
     fill: str
 
 
-def area_chart(data: Union[rx.Var, List[Dict]], data_key: str, areas: List[Area]):
+def area_chart(data: rx.Var | list[dict], data_key: str, areas: list[Area]):
     return card(
         rx.recharts.area_chart(
             *[
