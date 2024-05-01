@@ -1,4 +1,6 @@
 """Library of customized graphs and tables for the dashboard."""
+from __future__ import annotations
+
 import reflex as rx
 
 
